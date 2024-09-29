@@ -1,5 +1,7 @@
 # DYTT_movie
 用于电影天堂的电影爬取，获取电影信息并输出到文档，方便选片、下载和视频文件重命名  
+## 效果展示  
+![image](https://github.com/user-attachments/assets/131bd14e-18f0-4487-83a7-787afaa549e3)  
 # 爬取思路  
 所有的信息都藏在了页面内容里面，而没有通过啥电影列表、电影详情接口进一步渲染获取
 所以只要拿到html文件的txt内容,靠正则解析，既可获取到想要的信息
@@ -7,6 +9,11 @@
 1. 电影首页地址  https://www.dytt8.net/index.htm  
 2. 最新电影地址  https://www.dytt8.net/html/gndy/dyzz/list_23_1.html
 3. 电影详情页  https://www.dytt8.net/html/gndy/dyzz/20240814/65290.html
+4. 其他专题页
+   4.1 国内电影  https://www.dytt8.net/html/gndy/china/index.html
+   4.2 日韩电影  https://www.dytt8.net/html/gndy/rihan/index.html
+   4.3 欧美电影  https://www.dytt8.net/html/gndy/oumei/index.html
+   4.4 精品电影  https://www.dytt8.net/html/gndy/dyzz/index.html
 首页有一些最新的电影，甚至不展示在最新电影地址页面，可以用来获取下载地址和片名  
 ![image](https://github.com/user-attachments/assets/53fd912a-dc7c-4ed7-a363-0cc0300bce59)  
 最新电影页可以遍历大部分的电影  
