@@ -6,8 +6,6 @@ from openpyxl import load_workbook
 import os
 
 site = 'https://www.dytt8.net'
-lineNo = 1
-
 
 class DYTT_Movie:
 
@@ -74,6 +72,12 @@ def get_movie_detail(url):
         rating = imdb_rating
     else:
         rating = '0'
+    if subtitle == 'N/A':  # 没返回字幕的通常就是中文字幕
+        subtitle = '中文字幕'
+    elif subtitle == '中文':
+        subtitle = "中文字幕"
+    elif subtitle == '中英双字':
+        subtitle = "中英双字幕"
     return year, country, genre, language, subtitle, rating
     # year = soup.find(string=lambda text: '年' in text and '2024' in text).strip().split('年')[0].strip()
     # country = soup.find(string='◎产地').find_next_sibling(string=True).strip()
@@ -132,6 +136,10 @@ def get_movie(url):
             movie_info['语言'] = language
             movie_info['字幕'] = subtitle
             movie_info['评分'] = rating
+            if "/" in movie_name:
+                parts = movie_name.split('/')
+                movie_name = parts[0]
+
             splice_movie_name = movie_name + year + "年" + genre + "片评分" + rating + language + subtitle
             movie_info['本地视频文件名'] = splice_movie_name
             print(f"本地视频文件名: {splice_movie_name}")
@@ -185,5 +193,4 @@ def total_loop(num=5):
 
 
 if __name__ == '__main__':
-    # write_movie_to_excel()
-    total_loop(5)
+    total_loop(2)
